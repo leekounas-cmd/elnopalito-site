@@ -4,9 +4,9 @@ import { menu, tacoTuesday } from "@/lib/menu";
 import { business } from "@/lib/business";
 
 export const metadata: Metadata = {
-  title: "Menu — Tacos, Quesatacos, Birria & Quesadillas",
+  title: "Menu · Tacos, Quesatacos, Birria & Quesadillas",
   description:
-    "El Nopalito Taqueria menu — street tacos, quesatacos, birria tacos, and quesadillas. Taco Tuesday $1.99. Kiestwood Village, Oak Cliff, Dallas TX 75233.",
+    "El Nopalito Taqueria menu: street tacos, quesatacos, birria tacos, and quesadillas. Taco Tuesday $1.99. Kiestwood Village, Oak Cliff, Dallas TX 75233.",
   alternates: { canonical: "/menu" },
 };
 
@@ -23,7 +23,7 @@ export default function MenuPage() {
           </h1>
           <p className="mt-4 text-ink/70 text-lg max-w-2xl">
             Small menu on purpose. Every item is something we&apos;d serve our
-            family. Prices may vary — call to confirm or pull up and ask.
+            family. Prices may vary, call to confirm or pull up and ask.
           </p>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function MenuPage() {
           ))}
 
           <p className="text-sm text-ink/60 mt-8">
-            Don&apos;t see something? Just ask — we&apos;ll make it happen if we
+            Don&apos;t see something? Just ask. We&apos;ll make it happen if we
             can.
           </p>
         </div>

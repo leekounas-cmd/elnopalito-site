@@ -46,7 +46,7 @@ function Hero() {
           quesatacos, and slow-braised birria on W Kiest Blvd.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href={business.directionsUrl}
             target="_blank"
@@ -63,23 +63,23 @@ function Hero() {
           </a>
           <Link
             href="/menu"
-            className="rounded-full border border-cream/50 px-7 py-4 font-semibold text-cream hover:bg-cream/10 transition"
+            className="ml-2 underline underline-offset-4 decoration-cream/50 hover:decoration-accent text-cream/90 hover:text-accent text-sm font-medium transition"
           >
-            See the menu
+            see the menu
           </Link>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-1 text-sm text-cream/80">
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-cream/80">
           <span className="flex items-center gap-1.5">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#f4c430">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)">
               <path d="M12 2l2.5 7h7.5l-6 4.5L18 21l-6-4.5L6 21l2-7.5L2 9h7.5z" />
             </svg>
             4.6 on Google
           </span>
-          <span className="opacity-50">·</span>
+          <span aria-hidden className="opacity-50">·</span>
           <span>{business.hours}</span>
-          <span className="opacity-50">·</span>
-          <span>{fullAddress}</span>
+          <span aria-hidden className="opacity-50">·</span>
+          <span className="truncate max-w-[260px] sm:max-w-none">{fullAddress}</span>
         </div>
       </div>
     </section>
@@ -119,12 +119,14 @@ function BrandStory() {
         <div className="relative">
           <span className="hidden md:block tape" style={{ top: -14, left: 30, transform: "rotate(-6deg)", zIndex: 2 }} />
           <span className="hidden md:block tape tape-red" style={{ bottom: -14, right: 40, transform: "rotate(8deg)", zIndex: 2 }} />
-          <div className="relative aspect-[4/5] rounded-md overflow-hidden bg-cream p-3 shadow-xl">
+          <div className="relative aspect-[4/5] rounded-md overflow-hidden bg-paper p-3 shadow-xl">
             <div className="relative w-full h-full overflow-hidden">
               <Image
                 src="/images/taco-plate.jpg"
-                alt="Plate of tacos at El Nopalito"
+                alt="Plate of tacos at El Nopalito Taqueria"
                 fill
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -139,10 +141,9 @@ function BrandStory() {
             A small spot. A short menu. Tacos worth the trip.
           </h2>
           <p className="mt-6 text-ink/75 text-lg leading-relaxed">
-            We&apos;re a new family taqueria in Kiestwood Village. We don&apos;t do
-            a 50-item menu and we don&apos;t do shortcuts — we press tortillas in
-            house, slow-braise the birria, and make our salsas the way our
-            family always has.
+            We&apos;re a new family taqueria in Kiestwood Village. No 50-item
+            menu, no shortcuts. Tortillas pressed in house, birria braised low
+            and slow, salsas made the way our family has always made them.
           </p>
           <p className="mt-4 text-ink/75 text-lg leading-relaxed">
             If you find us, you&apos;ll tell a friend. That&apos;s how we&apos;re
@@ -179,15 +180,15 @@ function PolaroidGallery() {
             Off the plancha
           </p>
           <h2 className="font-display text-4xl md:text-6xl mt-3 text-ink leading-[1.05]">
-            Hot, fresh, and exactly the way you remember.
+            Hot off the plancha. Made in front of you.
           </h2>
         </div>
 
         <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 items-center">
-          <Polaroid src="/images/storefront.jpg" alt="El Nopalito storefront" caption="Find us on Kiest Blvd." rotate="-3deg" />
-          <Polaroid src="/images/inside-taco.jpg" alt="A taco at El Nopalito" caption="Pressed-to-order." rotate="2deg" tapeColor="tape-red" />
-          <Polaroid src="/images/taco-plate.jpg" alt="Plate of tacos" caption="The full plate." rotate="-1deg" />
-          <Polaroid src="/images/extra.jpg" alt="El Nopalito" caption="The neighborhood spot." rotate="3deg" tapeColor="tape-cream" />
+          <Polaroid src="/images/storefront.jpg" alt="El Nopalito storefront on W Kiest Blvd" caption="Find us on Kiest Blvd." rotate="-3deg" />
+          <Polaroid src="/images/inside-taco.jpg" alt="Hand-pressed taco at El Nopalito" caption="Pressed to order." rotate="2deg" tapeColor="tape-red" />
+          <Polaroid src="/images/taco-plate.jpg" alt="Plate of tacos at El Nopalito" caption="The full plate." rotate="-1deg" />
+          <Polaroid src="/images/extra.jpg" alt="El Nopalito on Kiest Blvd in Oak Cliff" caption="The neighborhood spot." rotate="3deg" tapeColor="tape-cream" />
           <div className="col-span-2 md:col-span-1 flex items-center justify-center">
             <div className="text-center">
               <p className="font-display text-5xl md:text-6xl text-primary">20/10</p>
@@ -224,11 +225,11 @@ function Polaroid({
   return (
     <div className="relative" style={{ transform: `rotate(${rotate})` }}>
       <span className={`tape ${tapeColor}`} style={{ top: -12, left: "50%", marginLeft: -45, transform: "rotate(-3deg)", zIndex: 2 }} />
-      <div className="bg-white p-3 pb-12 shadow-xl">
+      <div className="bg-paper p-3 pb-12 shadow-xl">
         <div className="relative aspect-square overflow-hidden">
-          <Image src={src} alt={alt} fill className="object-cover" />
+          <Image src={src} alt={alt} fill loading="lazy" className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" />
         </div>
-        <p className="absolute bottom-3 left-0 right-0 text-center font-display text-ink/80 text-sm">
+        <p className="absolute bottom-3 left-0 right-0 text-center font-display text-ink/80 text-base">
           {caption}
         </p>
       </div>
@@ -274,11 +275,11 @@ function TacoTuesdayBanner() {
 
         <div className="relative hidden md:block">
           <span className="tape tape-cream" style={{ top: -10, left: 40, transform: "rotate(-6deg)", zIndex: 2 }} />
-          <div className="bg-cream p-3 pb-10 shadow-2xl rotate-3">
+          <div className="bg-paper p-3 pb-10 shadow-2xl rotate-3">
             <div className="relative aspect-square overflow-hidden">
-              <Image src="/images/taco-plate.jpg" alt="Tacos" fill className="object-cover" />
+              <Image src="/images/taco-plate.jpg" alt="Street tacos at El Nopalito" fill loading="lazy" sizes="(max-width: 1024px) 50vw, 400px" className="object-cover" />
             </div>
-            <p className="absolute bottom-2 left-0 right-0 text-center font-display text-ink/80 text-sm">
+            <p className="absolute bottom-2 left-0 right-0 text-center font-display text-ink/80 text-base">
               See you Tuesday.
             </p>
           </div>
@@ -292,8 +293,8 @@ function FinalCTA() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <Image src="/images/storefront.jpg" alt="" fill className="object-cover" />
-        <div className="absolute inset-0 bg-ink/80" />
+        <Image src="/images/storefront.jpg" alt="" fill loading="lazy" sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/65 to-ink/85" />
       </div>
       <div className="relative mx-auto max-w-4xl px-5 sm:px-6 py-24 md:py-32 text-center text-cream">
         <p className="uppercase tracking-[0.25em] text-accent text-xs font-bold">

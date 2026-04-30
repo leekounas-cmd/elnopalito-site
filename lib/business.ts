@@ -11,7 +11,7 @@ export const business = {
     zip: "75233",
     neighborhood: "Kiestwood Village",
   },
-  hours: "Open daily — closes 9 PM",
+  hours: "Open daily, closes 9 PM",
   geo: { lat: 32.7195, lng: -96.8597 },
   instagram: "https://www.instagram.com/elnopalitotaqueriia/",
   instagramHandle: "@elnopalitotaqueriia",

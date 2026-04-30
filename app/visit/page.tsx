@@ -3,14 +3,14 @@ import Image from "next/image";
 import { business, fullAddress } from "@/lib/business";
 
 export const metadata: Metadata = {
-  title: "Visit — 2436 W Kiest Blvd, Dallas TX 75233",
-  description: `Find El Nopalito Taqueria at ${fullAddress}. Hours, directions, parking, and phone — Kiestwood Village, Oak Cliff.`,
+  title: "Visit · 2436 W Kiest Blvd, Dallas TX 75233",
+  description: `Find El Nopalito Taqueria at ${fullAddress}. Hours, directions, parking, and phone. Kiestwood Village, Oak Cliff.`,
   alternates: { canonical: "/visit" },
 };
 
 const dayHours = [
   { day: "Monday", hours: "Call to confirm" },
-  { day: "Tuesday", hours: "Taco Tuesday — call to confirm" },
+  { day: "Tuesday", hours: "Taco Tuesday, call to confirm" },
   { day: "Wednesday", hours: "Call to confirm" },
   { day: "Thursday", hours: "Call to confirm" },
   { day: "Friday", hours: "Call to confirm" },
@@ -75,8 +75,8 @@ export default function VisitPage() {
             ))}
           </ul>
           <p className="mt-3 text-sm text-ink/55">
-            Generally open daily, closes around 9 PM. Call ahead to confirm —
-            we&apos;ll update these once finalized.
+            Generally open daily, closes around 9 PM. Call ahead to confirm.
+            We&apos;ll update these once finalized.
           </p>
 
           <h2 className="font-display text-3xl text-ink mt-10">Contact</h2>

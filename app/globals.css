@@ -8,6 +8,7 @@
   --accent: #f4c430;
   --green: #2d6a4f;
   --cream: #fff5e1;
+  --paper: #fbf3df;
   --ink: #2b1810;
 }
 
@@ -19,9 +20,10 @@
   --color-accent: var(--accent);
   --color-green: var(--green);
   --color-cream: var(--cream);
+  --color-paper: var(--paper);
   --color-ink: var(--ink);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-onest);
+  --font-display: var(--font-caprasimo);
 }
 
 body {
@@ -33,7 +35,8 @@ body {
 
 .font-display {
   font-family: var(--font-display), Georgia, serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.005em;
+  font-feature-settings: "ss01";
 }
 
 .paper-texture {

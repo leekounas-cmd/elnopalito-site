@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Onest, Caprasimo } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -7,22 +7,23 @@ import { StickyMobileCTA } from "./components/StickyMobileCTA";
 import { LocalBusinessJsonLd } from "./components/JsonLd";
 import { business } from "@/lib/business";
 
-const inter = Inter({
-  variable: "--font-inter",
+const onest = Onest({
+  variable: "--font-onest",
   subsets: ["latin"],
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const caprasimo = Caprasimo({
+  variable: "--font-caprasimo",
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(business.siteUrl),
   title: {
-    default: "El Nopalito Taqueria — Tacos in Oak Cliff, Dallas",
+    default: "El Nopalito Taqueria · Tacos in Oak Cliff, Dallas",
     template: "%s · El Nopalito Taqueria",
   },
   description:
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     "Taco Tuesday Dallas",
   ],
   openGraph: {
-    title: "El Nopalito Taqueria — Tacos in Oak Cliff, Dallas",
+    title: "El Nopalito Taqueria · Tacos in Oak Cliff, Dallas",
     description:
       "Street tacos, quesatacos, birria, and quesadillas in Kiestwood Village. Taco Tuesday $1.99.",
     url: business.siteUrl,
@@ -60,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${onest.variable} ${caprasimo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <LocalBusinessJsonLd />

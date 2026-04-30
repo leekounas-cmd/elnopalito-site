@@ -4,7 +4,7 @@ import Link from "next/link";
 import { business, fullAddress } from "@/lib/business";
 
 export const metadata: Metadata = {
-  title: "About — Family Taqueria in Kiestwood Village",
+  title: "About · Family Taqueria in Kiestwood Village",
   description:
     "El Nopalito Taqueria is a small, family-run taco spot in Kiestwood Village, Oak Cliff. Real recipes, fresh tortillas, and a menu that stays small on purpose.",
   alternates: { canonical: "/about" },
@@ -24,7 +24,7 @@ export default function AboutPage() {
             </h1>
             <p className="mt-5 text-ink/75 text-lg leading-relaxed">
               El Nopalito is a small, new spot on W Kiest Blvd in Oak Cliff. We
-              opened to serve the kind of tacos we grew up on — pressed
+              opened to serve the kind of tacos we grew up on: pressed
               tortillas, real salsas, slow-braised meats. No shortcuts.
             </p>
             <p className="mt-4 text-ink/75 text-lg leading-relaxed">
@@ -59,7 +59,7 @@ export default function AboutPage() {
           <Block
             kicker="The neighborhood"
             title="Built for Oak Cliff."
-            body="We&rsquo;re proud to be in Kiestwood Village. Whether you&rsquo;re from southwest Dallas, Duncanville, or just driving by — pull up."
+            body="We&rsquo;re proud to be in Kiestwood Village. Whether you&rsquo;re from southwest Dallas, Duncanville, or just driving by, pull up."
           />
         </div>
       </section>

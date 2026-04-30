@@ -91,43 +91,59 @@ function SimpleStatement() {
         sizes="100vw"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/85" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/55" />
 
-      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 py-28 md:py-40 text-center text-cream">
-        <Reveal>
-          <p className={`text-primary text-[11px] ${kicker} [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]`}>
-            Our style
-          </p>
-        </Reveal>
-        <Reveal delay={120}>
-          <h2 className={`font-display lowercase mt-5 leading-[0.86] text-[clamp(3.5rem,11vw,8.5rem)] ${overlayShadow}`}>
-            we keep it simple.
-          </h2>
-        </Reveal>
-        <Reveal delay={240}>
-          <p className={`mt-8 text-cream text-base sm:text-lg max-w-2xl mx-auto ${subtext} [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]`}>
-            Flavorful tacos. Spicy salsas. No shortcuts.
-          </p>
-        </Reveal>
-        <Reveal delay={360}>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/menu"
-              className={`rounded-md bg-primary text-ink px-7 py-4 text-sm shadow-2xl shadow-black/40 hover:bg-primary-dark hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
-            >
-              See the Menu
-            </Link>
-            <a
-              href={business.directionsUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={`rounded-md bg-cream text-ink px-7 py-4 text-sm shadow-xl shadow-black/30 hover:bg-white hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
-            >
-              Get Directions
-            </a>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 py-28 md:py-40 text-cream">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-end">
+          <div className="md:col-span-8 lg:col-span-7 text-left">
+            <Reveal>
+              <p className={`text-primary text-[11px] ${kicker} [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]`}>
+                Our style
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
+              <h2 className={`font-display lowercase mt-5 leading-[0.86] text-[clamp(3.5rem,11vw,8.5rem)] ${overlayShadow}`}>
+                we keep it<br />
+                <span className="text-primary">simple.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className={`mt-8 text-cream text-base sm:text-lg max-w-xl ${subtext} [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]`}>
+                Flavorful tacos. Spicy salsas. No shortcuts.
+              </p>
+            </Reveal>
+            <Reveal delay={360}>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Link
+                  href="/menu"
+                  className={`rounded-md bg-primary text-ink px-7 py-4 text-sm shadow-2xl shadow-black/40 hover:bg-primary-dark hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
+                >
+                  See the Menu
+                </Link>
+                <a
+                  href={business.directionsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`rounded-md bg-cream text-ink px-7 py-4 text-sm shadow-xl shadow-black/30 hover:bg-cream/90 hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
+                >
+                  Get Directions
+                </a>
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          <Reveal delay={480} className="hidden md:flex md:col-span-4 lg:col-span-5 justify-end">
+            <div className="text-right">
+              <p className={`text-cream/70 text-[11px] ${kicker} [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]`}>
+                02 / 04
+              </p>
+              <p className={`mt-3 text-primary text-sm ${kicker} [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]`}>
+                Family Owned<br />Kiestwood Village
+              </p>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -135,50 +151,52 @@ function SimpleStatement() {
 
 function TacoTuesday() {
   return (
-    <section className="relative overflow-hidden">
-      <Image
-        src="/images/salsa-tacos.jpg"
-        alt="Three soft tacos with green and orange salsas at El Nopalito"
-        fill
-        loading="lazy"
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/85" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-black/35" />
+    <section className="relative grid md:grid-cols-2 min-h-[80svh]">
+      <div className="relative min-h-[60svh] md:min-h-0 overflow-hidden">
+        <Image
+          src="/images/salsa-tacos.jpg"
+          alt="Three soft tacos with green and orange salsas at El Nopalito"
+          fill
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/0 md:to-black/15" />
+      </div>
 
-      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 py-28 md:py-40 text-center text-cream">
+      <div className="relative bg-primary text-ink px-7 sm:px-10 lg:px-16 py-16 md:py-24 flex flex-col justify-center">
         <Reveal>
-          <p className={`text-primary text-[11px] ${kicker} [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]`}>
+          <p className={`text-ink text-[11px] ${kicker}`}>
             {tacoTuesday.headline}
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <h2 className={`font-display lowercase mt-6 leading-[0.82] text-[clamp(4rem,17vw,13rem)] ${overlayShadow}`}>
-            <span className="block">street tacos</span>
-            <span className="block mt-2 md:mt-4 text-primary">
-              {tacoTuesday.price}
-            </span>
+          <h2 className="font-display lowercase mt-5 leading-[0.85] text-[clamp(3.25rem,9vw,7rem)]">
+            <span className="block">street tacos.</span>
+            <span className="block mt-2">{tacoTuesday.price}</span>
           </h2>
         </Reveal>
         <Reveal delay={260}>
-          <p className={`mt-7 text-cream text-base sm:text-lg ${subtext} [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]`}>
+          <p className={`mt-7 text-ink text-base sm:text-lg max-w-md ${subtext}`}>
             Every Tuesday · No Catch
+          </p>
+          <p className="mt-3 text-ink/85 text-base max-w-md">
+            Bring a friend. Bring four. Just bring an appetite.
           </p>
         </Reveal>
         <Reveal delay={380}>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <div className="mt-9 flex flex-wrap gap-3">
             <a
               href={business.directionsUrl}
               target="_blank"
               rel="noreferrer"
-              className={`rounded-md bg-primary text-ink px-8 py-4 text-sm shadow-2xl shadow-black/40 hover:bg-primary-dark hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
+              className={`rounded-md bg-ink text-cream px-7 py-4 text-sm shadow-xl shadow-black/30 hover:bg-ink/90 hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
             >
               Pull Up Tuesday
             </a>
             <a
               href={business.phoneHref}
-              className={`rounded-md bg-cream text-ink px-8 py-4 text-sm shadow-xl shadow-black/30 hover:bg-white hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
+              className={`rounded-md bg-cream text-ink px-7 py-4 text-sm shadow-xl shadow-black/20 hover:bg-cream/90 hover:-translate-y-0.5 transition-all duration-300 ${subtext}`}
             >
               Call {business.phone}
             </a>

@@ -39,67 +39,63 @@ body {
   font-feature-settings: "ss01";
 }
 
-.paper-texture {
-  background-image:
-    radial-gradient(rgba(43, 24, 16, 0.05) 1px, transparent 1px);
-  background-size: 6px 6px;
+/* Brand gradient — mirrors the lime-to-deep-green of the logo lettering */
+.text-brand-gradient {
+  background-image: linear-gradient(180deg, #d8f55a 0%, #93d02b 55%, #5a8516 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
 }
 
-/* Washi tape strip for polaroid corners */
-.tape {
-  position: absolute;
-  width: 90px;
-  height: 22px;
-  background: rgba(244, 196, 48, 0.85);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-  mix-blend-mode: multiply;
+/* Hero headline + subhead reveal on mount */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
-.tape::before,
-.tape::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 6px;
-  background-image: linear-gradient(
-    -45deg,
-    rgba(0, 0, 0, 0.06) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(0, 0, 0, 0.06) 50%,
-    rgba(0, 0, 0, 0.06) 75%,
-    transparent 75%
-  );
-  background-size: 6px 6px;
+.animate-fade-up {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-.tape::before { left: 0; }
-.tape::after { right: 0; }
-.tape-red { background: rgba(200, 52, 31, 0.8); }
-.tape-cream { background: rgba(255, 245, 225, 0.85); }
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.24s; }
+.delay-3 { animation-delay: 0.36s; }
+.delay-4 { animation-delay: 0.5s; }
 
-/* Marquee */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* Slow Ken-Burns drift on hero photos */
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
 }
-.marquee-track {
-  animation: marquee 32s linear infinite;
-  width: max-content;
+.animate-ken-burns {
+  animation: kenBurns 28s ease-out forwards;
+  will-change: transform;
 }
-.marquee-slow {
-  animation-duration: 48s;
+
+/* Pulse dot for the "now open" badge */
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.6); opacity: 0.4; }
 }
+.animate-pulse-dot {
+  animation: pulseDot 2.4s ease-in-out infinite;
+}
+
+/* Scroll-reveal — toggled by the Reveal client component */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
-
-.divider-zigzag {
-  background:
-    linear-gradient(135deg, var(--paper) 25%, transparent 25%) -8px 0,
-    linear-gradient(225deg, var(--paper) 25%, transparent 25%) -8px 0,
-    linear-gradient(315deg, var(--paper) 25%, transparent 25%),
-    linear-gradient(45deg, var(--paper) 25%, transparent 25%);
-  background-size: 16px 16px;
-  background-color: var(--primary);
-  height: 16px;
+  .animate-fade-up,
+  .animate-ken-burns,
+  .animate-pulse-dot { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }

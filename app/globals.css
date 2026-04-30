@@ -41,3 +41,48 @@ body {
     radial-gradient(rgba(43, 24, 16, 0.05) 1px, transparent 1px);
   background-size: 6px 6px;
 }
+
+/* Washi tape strip for polaroid corners */
+.tape {
+  position: absolute;
+  width: 90px;
+  height: 22px;
+  background: rgba(244, 196, 48, 0.85);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  mix-blend-mode: multiply;
+}
+.tape::before,
+.tape::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.06) 50%,
+    rgba(0, 0, 0, 0.06) 75%,
+    transparent 75%
+  );
+  background-size: 6px 6px;
+}
+.tape::before { left: 0; }
+.tape::after { right: 0; }
+.tape-red { background: rgba(200, 52, 31, 0.8); }
+.tape-cream { background: rgba(255, 245, 225, 0.85); }
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}

@@ -3,7 +3,7 @@ import { business, fullAddress } from "@/lib/business";
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-ink text-cream">
+    <footer className="bg-ink text-cream">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-14 grid gap-10 md:grid-cols-3">
         <div>
           <h3 className="font-display text-3xl text-accent">El Nopalito</h3>

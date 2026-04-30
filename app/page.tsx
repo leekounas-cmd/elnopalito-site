@@ -43,7 +43,7 @@ function Hero() {
 
         <h1 className={`font-display lowercase leading-[0.86] text-[clamp(3.5rem,12vw,9.5rem)] ${overlayShadow}`}>
           <span className="block animate-fade-up delay-1">small spot.</span>
-          <span className="block mt-3 md:mt-5 text-brand-gradient animate-fade-up delay-2">
+          <span className="block mt-3 md:mt-5 text-primary animate-fade-up delay-2">
             family owned.
           </span>
         </h1>
@@ -97,7 +97,7 @@ function SimpleStatement() {
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6 py-28 md:py-40 text-center text-cream">
         <Reveal>
           <p className={`text-primary text-[11px] ${kicker} [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]`}>
-            The whole pitch
+            Our style
           </p>
         </Reveal>
         <Reveal delay={120}>
@@ -156,7 +156,7 @@ function TacoTuesday() {
         <Reveal delay={120}>
           <h2 className={`font-display lowercase mt-6 leading-[0.82] text-[clamp(4rem,17vw,13rem)] ${overlayShadow}`}>
             <span className="block">street tacos</span>
-            <span className="block mt-2 md:mt-4 text-brand-gradient">
+            <span className="block mt-2 md:mt-4 text-primary">
               {tacoTuesday.price}
             </span>
           </h2>

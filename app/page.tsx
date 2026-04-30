@@ -18,8 +18,8 @@ function Hero() {
   return (
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <Image
-        src="/images/quesataco.jpg"
-        alt="Cheese-griddled quesatacos at El Nopalito Taqueria in Oak Cliff, Dallas"
+        src="/images/inside-taco.jpg"
+        alt="A hand-pressed taco at El Nopalito Taqueria in Oak Cliff, Dallas"
         fill
         priority
         sizes="100vw"
@@ -74,24 +74,35 @@ function Hero() {
 
 function BigStatement() {
   return (
-    <section className="bg-background">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-24 md:py-36 text-center">
-        <p className="uppercase tracking-[0.4em] text-primary-dark text-xs font-black">
+    <section className="relative overflow-hidden">
+      <Image
+        src="/images/quesataco.jpg"
+        alt=""
+        fill
+        loading="lazy"
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/85" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-black/35" />
+
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 py-28 md:py-40 text-center text-cream">
+        <p className="uppercase tracking-[0.4em] text-primary text-xs font-black [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
           The whole pitch
         </p>
-        <h2 className="font-display lowercase text-ink mt-5 leading-[0.86] text-[clamp(3.5rem,11vw,8.5rem)]">
+        <h2 className="font-display lowercase mt-5 leading-[0.86] text-[clamp(3.5rem,11vw,8.5rem)] [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
           we make tacos.
           <br />
           we make them right.
         </h2>
-        <p className="mt-8 text-ink/75 text-xl max-w-2xl mx-auto">
+        <p className="mt-8 text-cream/95 text-xl max-w-2xl mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
           Four things on the menu. Tortillas pressed in house. Birria braised
           low and slow. Nothing fancy, just done right.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Link
             href="/menu"
-            className="rounded-md bg-ink text-cream px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-primary hover:text-ink transition"
+            className="rounded-md bg-primary text-ink px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-primary-dark transition shadow-2xl shadow-black/40"
           >
             See the Menu
           </Link>
@@ -99,7 +110,7 @@ function BigStatement() {
             href={business.directionsUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-md bg-primary text-ink px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-primary-dark transition"
+            className="rounded-md bg-cream text-ink px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-white transition shadow-xl shadow-black/30"
           >
             Get Directions
           </a>

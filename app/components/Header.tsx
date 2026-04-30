@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { business } from "@/lib/business";
@@ -30,18 +31,22 @@ export function Header() {
     <header
       className={`fixed top-0 inset-x-0 z-40 transition-colors duration-300 ${
         solid
-          ? "bg-cream border-b-[3px] border-ink"
+          ? "bg-cream border-b border-ink/10"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-7 flex items-center justify-between h-16 md:h-20">
-        <Link
-          href="/"
-          className={`font-display text-2xl md:text-3xl lowercase leading-none tracking-tight transition-colors ${
-            solid ? "text-primary" : "text-cream"
-          }`}
-        >
-          el nopalito
+        <Link href="/" className="flex items-center gap-3" aria-label="El Nopalito Taqueria home">
+          <span className="relative size-11 md:size-12 rounded-full overflow-hidden ring-2 ring-primary shrink-0">
+            <Image src="/images/logo.jpg" alt="" fill sizes="48px" className="object-cover" priority />
+          </span>
+          <span
+            className={`hidden sm:inline font-display text-xl md:text-2xl lowercase leading-none tracking-tight transition-colors ${
+              solid ? "text-ink" : "text-cream"
+            }`}
+          >
+            el nopalito
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-xs font-black uppercase tracking-[0.2em]">
@@ -50,7 +55,7 @@ export function Header() {
               key={n.href}
               href={n.href}
               className={`transition-colors ${
-                solid ? "text-ink hover:text-primary" : "text-cream hover:text-accent"
+                solid ? "text-ink hover:text-primary-dark" : "text-cream hover:text-primary"
               }`}
             >
               {n.label}
@@ -62,7 +67,7 @@ export function Header() {
           href={business.directionsUrl}
           target="_blank"
           rel="noreferrer"
-          className="hidden md:inline-flex rounded-full bg-primary text-cream px-5 py-2.5 text-xs font-black uppercase tracking-[0.2em] hover:bg-primary-dark transition-colors border-2 border-ink"
+          className="hidden md:inline-flex rounded-md bg-primary text-ink px-5 py-2.5 text-xs font-black uppercase tracking-[0.2em] hover:bg-primary-dark transition-colors"
         >
           Directions
         </a>
@@ -86,7 +91,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t-[3px] border-ink bg-cream">
+        <div className="md:hidden border-t border-ink/10 bg-cream">
           <div className="mx-auto max-w-7xl px-5 py-5 flex flex-col gap-4">
             {nav.map((n) => (
               <Link
@@ -98,10 +103,10 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <div className="pt-3 grid grid-cols-2 gap-2 border-t-2 border-ink/15">
+            <div className="pt-3 grid grid-cols-2 gap-2 border-t border-ink/10">
               <a
                 href={business.phoneHref}
-                className="rounded-full bg-cream border-2 border-ink text-ink px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em]"
+                className="rounded-md bg-cream border border-ink/20 text-ink px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em]"
               >
                 Call
               </a>
@@ -109,7 +114,7 @@ export function Header() {
                 href={business.directionsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-primary text-cream px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em] border-2 border-ink"
+                className="rounded-md bg-primary text-ink px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em]"
               >
                 Directions
               </a>

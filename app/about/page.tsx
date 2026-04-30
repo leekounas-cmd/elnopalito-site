@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-cream">
+      <section className="bg-cream pt-16 md:pt-20">
         <div className="mx-auto max-w-6xl px-5 sm:px-6 py-16 md:py-20 grid gap-10 md:grid-cols-2 items-center">
           <div>
             <p className="uppercase tracking-widest text-primary text-xs font-bold">

@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { business } from "@/lib/business";
 
 const nav = [
-  { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
   { href: "/about", label: "About" },
   { href: "/visit", label: "Visit" },
@@ -13,45 +13,69 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const solid = !isHome || scrolled || open;
 
   return (
-    <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-ink/10">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6 flex items-center justify-between h-16">
-        <Link href="/" className="font-display text-2xl text-primary leading-none">
-          El Nopalito
+    <header
+      className={`fixed top-0 inset-x-0 z-40 transition-colors duration-300 ${
+        solid
+          ? "bg-cream border-b-[3px] border-ink"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-7 flex items-center justify-between h-16 md:h-20">
+        <Link
+          href="/"
+          className={`font-display text-2xl md:text-3xl lowercase leading-none tracking-tight transition-colors ${
+            solid ? "text-primary" : "text-cream"
+          }`}
+        >
+          el nopalito
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink">
+        <nav className="hidden md:flex items-center gap-8 text-xs font-black uppercase tracking-[0.2em]">
           {nav.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-primary transition">
+            <Link
+              key={n.href}
+              href={n.href}
+              className={`transition-colors ${
+                solid ? "text-ink hover:text-primary" : "text-cream hover:text-accent"
+              }`}
+            >
               {n.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
-          <a
-            href={business.phoneHref}
-            className="text-sm font-semibold text-ink hover:text-primary"
-          >
-            {business.phone}
-          </a>
-          <a
-            href={business.directionsUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark transition"
-          >
-            Directions
-          </a>
-        </div>
+        <a
+          href={business.directionsUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="hidden md:inline-flex rounded-full bg-primary text-cream px-5 py-2.5 text-xs font-black uppercase tracking-[0.2em] hover:bg-primary-dark transition-colors border-2 border-ink"
+        >
+          Directions
+        </a>
 
         <button
-          aria-label="Open menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden p-2 -mr-2 text-ink"
+          className={`md:hidden p-2 -mr-2 transition-colors ${
+            solid ? "text-ink" : "text-cream"
+          }`}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             {open ? (
               <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
             ) : (
@@ -62,24 +86,34 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-ink/10 bg-cream">
-          <div className="mx-auto max-w-6xl px-5 py-4 flex flex-col gap-4">
+        <div className="md:hidden border-t-[3px] border-ink bg-cream">
+          <div className="mx-auto max-w-7xl px-5 py-5 flex flex-col gap-4">
             {nav.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="text-lg font-medium text-ink"
+                className="text-lg font-black uppercase tracking-[0.18em] text-ink"
               >
                 {n.label}
               </Link>
             ))}
-            <a
-              href={business.phoneHref}
-              className="text-lg font-semibold text-primary"
-            >
-              {business.phone}
-            </a>
+            <div className="pt-3 grid grid-cols-2 gap-2 border-t-2 border-ink/15">
+              <a
+                href={business.phoneHref}
+                className="rounded-full bg-cream border-2 border-ink text-ink px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em]"
+              >
+                Call
+              </a>
+              <a
+                href={business.directionsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-primary text-cream px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em] border-2 border-ink"
+              >
+                Directions
+              </a>
+            </div>
           </div>
         </div>
       )}

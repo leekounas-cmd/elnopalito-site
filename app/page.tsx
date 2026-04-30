@@ -7,81 +7,73 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <MarqueeStrip />
-      <PhotoEssay />
-      <BrandStory />
-      <TacoTuesdayBanner />
-      <MarqueeStrip slow />
-      <FinalCTA />
+      <Marquee />
+      <BigStatement />
+      <Gallery />
+      <TacoTuesday />
+      <Visit />
     </>
   );
 }
 
 function Hero() {
   return (
-    <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden">
+    <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <Image
         src="/images/inside-taco.jpg"
-        alt="A hand-pressed taco at El Nopalito Taqueria in Oak Cliff"
+        alt="A hand-pressed taco at El Nopalito Taqueria in Oak Cliff, Dallas"
         fill
         priority
         sizes="100vw"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/30 to-ink/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/75" />
 
       <div className="relative h-full mx-auto max-w-6xl px-5 sm:px-6 flex flex-col items-center justify-center text-center text-cream">
-        <p className="uppercase tracking-[0.32em] text-accent text-[11px] sm:text-xs font-bold">
-          Kiestwood Village · Oak Cliff · Dallas
-        </p>
-        <h1 className="font-display lowercase mt-5 leading-[0.92] max-w-5xl text-[clamp(3.25rem,11vw,8rem)]">
-          real-deal tacos,
+        <span className="inline-flex items-center gap-2 bg-primary text-cream rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.25em] mb-7 border-2 border-ink">
+          <span className="size-1.5 rounded-full bg-accent" />
+          Now open · Oak Cliff
+        </span>
+
+        <h1 className="font-display lowercase leading-[0.86] text-[clamp(3.5rem,12vw,9.5rem)]">
+          small spot.
           <br />
-          made by hand.
+          <span className="text-accent">big tacos.</span>
         </h1>
-        <p className="mt-6 text-lg md:text-xl text-cream/90 max-w-xl mx-auto">
-          The little taqueria on Kiest Blvd. Hand-pressed, slow-braised, and worth the drive.
+        <p className="mt-7 text-lg md:text-2xl text-cream max-w-2xl font-medium">
+          Family-run taqueria on W Kiest Blvd. Hand-pressed,
+          slow-braised, worth the drive.
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
             href={business.directionsUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-primary px-7 py-4 font-semibold text-white hover:bg-primary-dark transition shadow-xl shadow-black/30"
+            className="rounded-full bg-primary text-cream px-8 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-primary-dark transition shadow-2xl shadow-black/30 border-2 border-ink"
           >
-            Get directions
+            Get Directions
           </a>
           <a
             href={business.phoneHref}
-            className="rounded-full bg-cream px-7 py-4 font-semibold text-ink hover:bg-white transition"
+            className="rounded-full bg-accent text-ink px-8 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-accent-dark transition shadow-xl shadow-black/20 border-2 border-ink"
           >
             Call {business.phone}
           </a>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm text-cream/85">
-          <span className="flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)">
-              <path d="M12 2l2.5 7h7.5l-6 4.5L18 21l-6-4.5L6 21l2-7.5L2 9h7.5z" />
-            </svg>
-            4.6 on Google
-          </span>
-          <span aria-hidden className="opacity-50">·</span>
-          <span>{business.hours}</span>
-          <span aria-hidden className="opacity-50 hidden sm:inline">·</span>
-          <Link href="/menu" className="underline underline-offset-4 decoration-cream/40 hover:text-accent hover:decoration-accent">
-            see the menu
-          </Link>
-        </div>
+        <p className="mt-7 text-xs text-cream/85 flex items-center gap-2 uppercase tracking-[0.18em] font-bold">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M12 2l2.5 7h7.5l-6 4.5L18 21l-6-4.5L6 21l2-7.5L2 9h7.5z" />
+          </svg>
+          4.6 on Google · {business.hours}
+        </p>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 divider-zigzag" />
     </section>
   );
 }
 
-function MarqueeStrip({ slow = false }: { slow?: boolean }) {
+function Marquee() {
   const items = [
     "Street Tacos",
     "Quesatacos",
@@ -95,16 +87,14 @@ function MarqueeStrip({ slow = false }: { slow?: boolean }) {
   const row = [...items, ...items];
   return (
     <section
-      className="bg-primary text-cream py-6 overflow-hidden border-y-2 border-accent/30"
+      className="bg-primary text-cream py-5 md:py-6 overflow-hidden border-y-[3px] border-ink"
       aria-hidden
     >
-      <div
-        className={`marquee-track flex gap-10 whitespace-nowrap font-display lowercase text-3xl md:text-4xl ${slow ? "marquee-slow" : ""}`}
-      >
+      <div className="marquee-track flex gap-10 whitespace-nowrap font-display lowercase text-3xl md:text-4xl">
         {row.map((t, i) => (
           <span key={i} className="flex items-center gap-10">
             <span className={i % 3 === 1 ? "text-accent" : ""}>{t}</span>
-            <span className="text-accent/70 text-2xl">✦</span>
+            <span className="text-accent text-2xl">★</span>
           </span>
         ))}
       </div>
@@ -112,162 +102,150 @@ function MarqueeStrip({ slow = false }: { slow?: boolean }) {
   );
 }
 
-function PhotoEssay() {
+function BigStatement() {
   return (
-    <section className="bg-paper">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 py-20 md:py-28">
-        <div className="grid gap-6 md:gap-3 md:grid-cols-12 md:grid-rows-[28rem_22rem]">
-          <FrameCard
-            className="md:col-span-7 md:row-span-2 aspect-[4/5] md:aspect-auto"
-            src="/images/taco-plate.jpg"
-            alt="Plate of street tacos at El Nopalito"
-            caption="The plate."
-          />
-          <FrameCard
-            className="md:col-span-5 md:row-span-1 aspect-[4/3] md:aspect-auto"
-            src="/images/storefront.jpg"
-            alt="El Nopalito Taqueria storefront on W Kiest Blvd"
-            caption="2436 W Kiest Blvd."
-          />
-          <FrameCard
-            className="md:col-span-5 md:row-span-1 aspect-[4/3] md:aspect-auto"
-            src="/images/extra.jpg"
-            alt="The El Nopalito sign in Kiestwood Village"
-            caption="Kiestwood Village."
-          />
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-[1.4fr_1fr] items-end">
-          <div>
-            <p className="uppercase tracking-[0.32em] text-primary text-xs font-bold">
-              Off the plancha
-            </p>
-            <h2 className="font-display lowercase text-5xl md:text-7xl mt-3 text-ink leading-[0.95]">
-              hot, fresh, made in front of you.
-            </h2>
-          </div>
-          <p className="text-ink/75 text-lg leading-relaxed md:pb-2">
-            Tortillas pressed to order. Birria braised low and slow. Salsas
-            made the way our family always has. Four things, done right.
-          </p>
+    <section className="bg-background border-b-[3px] border-ink">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-24 md:py-36 text-center">
+        <p className="uppercase tracking-[0.4em] text-primary text-xs font-black">
+          The whole pitch
+        </p>
+        <h2 className="font-display lowercase text-ink mt-5 leading-[0.86] text-[clamp(3.5rem,11vw,8.5rem)]">
+          we make tacos.
+          <br />
+          <span className="text-primary">that&apos;s it.</span>
+          <br />
+          we make them right.
+        </h2>
+        <p className="mt-8 text-ink/75 text-xl max-w-2xl mx-auto">
+          Four things on the menu. Tortillas pressed in house. Birria braised
+          low and slow. Nothing fancy, just done right.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Link
+            href="/menu"
+            className="rounded-full bg-ink text-cream px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-primary transition border-2 border-ink"
+          >
+            See the Menu
+          </Link>
+          <a
+            href={business.directionsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-primary text-cream px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-primary-dark transition border-2 border-ink"
+          >
+            Get Directions
+          </a>
         </div>
       </div>
     </section>
   );
 }
 
-function FrameCard({
+function Gallery() {
+  return (
+    <section className="bg-paper border-b-[3px] border-ink">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="grid gap-3 md:grid-cols-12 md:grid-rows-[26rem_22rem]">
+          <Frame
+            className="md:col-span-7 md:row-span-2 aspect-[4/5] md:aspect-auto"
+            src="/images/taco-plate.jpg"
+            alt="Plate of street tacos at El Nopalito"
+            kicker="The plate"
+            title="four meats, one tortilla"
+          />
+          <Frame
+            className="md:col-span-5 md:row-span-1 aspect-[4/3] md:aspect-auto"
+            src="/images/storefront.jpg"
+            alt="El Nopalito Taqueria storefront on W Kiest Blvd, Dallas"
+            kicker="Find us"
+            title="2436 w kiest blvd"
+          />
+          <Frame
+            className="md:col-span-5 md:row-span-1 aspect-[4/3] md:aspect-auto"
+            src="/images/extra.jpg"
+            alt="El Nopalito Taqueria, Kiestwood Village, Oak Cliff"
+            kicker="The neighborhood"
+            title="kiestwood village"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Frame({
   className = "",
   src,
   alt,
-  caption,
+  kicker,
+  title,
 }: {
   className?: string;
   src: string;
   alt: string;
-  caption: string;
+  kicker: string;
+  title: string;
 }) {
   return (
-    <figure className={`relative overflow-hidden bg-ink ${className}`}>
+    <figure className={`relative overflow-hidden bg-ink group border-[3px] border-ink ${className}`}>
       <Image
         src={src}
         alt={alt}
         fill
         loading="lazy"
-        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
-        className="object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 700px"
+        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
       />
-      <figcaption className="absolute bottom-0 left-0 right-0 p-4 text-cream font-display lowercase text-lg bg-gradient-to-t from-ink/85 via-ink/40 to-transparent">
-        {caption}
+      <figcaption className="absolute bottom-0 left-0 right-0 p-5 md:p-6 bg-gradient-to-t from-ink/95 via-ink/45 to-transparent">
+        <p className="uppercase tracking-[0.32em] text-accent text-[10px] font-black">
+          {kicker}
+        </p>
+        <p className="font-display lowercase text-cream text-2xl md:text-3xl mt-1">
+          {title}
+        </p>
       </figcaption>
     </figure>
   );
 }
 
-function BrandStory() {
+function TacoTuesday() {
   return (
-    <section className="bg-background">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-24 md:py-32 grid gap-12 md:gap-16 md:grid-cols-2 items-center">
-        <div className="relative aspect-[4/5] overflow-hidden">
-          <Image
-            src="/images/inside-taco.jpg"
-            alt="A taco being plated at El Nopalito Taqueria"
-            fill
-            loading="lazy"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-          />
-          <span className="absolute top-5 left-5 inline-flex items-center gap-2 bg-primary text-cream text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">
-            <span className="size-1.5 rounded-full bg-accent" />
-            Family-run
-          </span>
-        </div>
-
-        <div>
-          <p className="uppercase tracking-[0.32em] text-primary text-xs font-bold">
-            Our story
-          </p>
-          <h2 className="font-display lowercase text-5xl md:text-7xl mt-3 text-ink leading-[0.92]">
-            a small spot. a short menu. tacos worth the trip.
-          </h2>
-          <p className="mt-7 text-ink/75 text-lg leading-relaxed">
-            We&apos;re a new family taqueria in Kiestwood Village. No 50-item
-            menu, no shortcuts. We press tortillas in house, slow-braise the
-            birria, and make our salsas the way our family always has.
-          </p>
-          <p className="mt-4 text-ink/75 text-lg leading-relaxed">
-            If you find us, you&apos;ll tell a friend. That&apos;s how we&apos;re
-            building this place.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href="/about"
-              className="rounded-full bg-ink text-cream px-6 py-3 font-semibold hover:bg-primary transition"
-            >
-              More about us
-            </Link>
-            <a
-              href={business.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-ink/20 text-ink px-6 py-3 font-semibold hover:border-primary hover:text-primary transition"
-            >
-              Follow {business.instagramHandle}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TacoTuesdayBanner() {
-  return (
-    <section className="bg-primary text-cream relative overflow-hidden">
-      <div className="absolute inset-0 paper-texture opacity-15" />
-      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28 text-center">
-        <p className="uppercase tracking-[0.4em] text-accent text-xs font-bold">
+    <section className="bg-primary text-cream relative overflow-hidden border-b-[3px] border-ink">
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.2) 1.5px, transparent 1.5px)",
+          backgroundSize: "18px 18px",
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 py-24 md:py-32 text-center">
+        <p className="uppercase tracking-[0.4em] text-accent text-xs font-black">
           {tacoTuesday.headline}
         </p>
-        <h2 className="font-display lowercase mt-5 leading-[0.9] text-[clamp(3.5rem,12vw,9rem)]">
-          street tacos<br />
+        <h2 className="font-display lowercase mt-6 leading-[0.82] text-[clamp(4rem,17vw,13rem)]">
+          street tacos
+          <br />
           <span className="text-accent">{tacoTuesday.price}</span>
         </h2>
-        <p className="mt-6 text-cream/90 text-xl max-w-xl mx-auto">
-          Every Tuesday. No catch. Bring a friend. Or four.
+        <p className="mt-6 text-cream text-2xl md:text-3xl font-display lowercase">
+          every tuesday. no catch.
         </p>
-        <div className="mt-9 flex flex-wrap justify-center gap-3">
+        <p className="mt-3 text-cream/85 text-lg max-w-xl mx-auto">
+          Bring a friend. Bring four. Just bring an appetite.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
           <a
             href={business.directionsUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-accent text-ink font-semibold px-8 py-4 hover:bg-yellow-300 transition shadow-lg shadow-black/20"
+            className="rounded-full bg-accent text-ink font-black px-8 py-4 text-sm uppercase tracking-[0.18em] hover:bg-accent-dark transition shadow-2xl shadow-black/30 border-2 border-ink"
           >
-            Pull up Tuesday
+            Pull Up Tuesday
           </a>
           <a
             href={business.phoneHref}
-            className="rounded-full border-2 border-cream/40 text-cream px-8 py-4 font-semibold hover:bg-cream/10 transition"
+            className="rounded-full bg-cream text-ink px-8 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-white transition shadow-xl border-2 border-ink"
           >
             Call {business.phone}
           </a>
@@ -277,9 +255,9 @@ function TacoTuesdayBanner() {
   );
 }
 
-function FinalCTA() {
+function Visit() {
   return (
-    <section className="relative overflow-hidden h-[80vh] min-h-[520px]">
+    <section className="relative overflow-hidden h-[85vh] min-h-[560px]">
       <Image
         src="/images/storefront.jpg"
         alt=""
@@ -288,30 +266,30 @@ function FinalCTA() {
         sizes="100vw"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/55 to-ink/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/55 to-ink/95" />
       <div className="relative h-full mx-auto max-w-4xl px-5 sm:px-6 flex flex-col justify-end items-center text-center text-cream pb-20 md:pb-28">
-        <p className="uppercase tracking-[0.32em] text-accent text-xs font-bold">
+        <p className="uppercase tracking-[0.4em] text-accent text-xs font-black">
           Visit
         </p>
-        <h2 className="font-display lowercase text-5xl md:text-7xl mt-4 leading-[0.95]">
-          come hungry.<br />stay a minute.
+        <h2 className="font-display lowercase mt-4 leading-[0.88] text-[clamp(3.5rem,11vw,8.5rem)]">
+          come hungry.
+          <br />
+          <span className="text-accent">stay a minute.</span>
         </h2>
-        <p className="mt-5 text-cream/90 text-lg">
-          {fullAddress}
-        </p>
-        <p className="text-cream/75 text-sm mt-1">{business.hours}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <p className="mt-6 text-cream text-lg md:text-xl">{fullAddress}</p>
+        <p className="text-cream/85 text-sm mt-1 uppercase tracking-[0.18em] font-bold">{business.hours}</p>
+        <div className="mt-9 flex flex-wrap justify-center gap-3">
           <a
             href={business.directionsUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-primary text-white px-7 py-4 font-semibold hover:bg-primary-dark transition"
+            className="rounded-full bg-primary text-cream px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-primary-dark transition shadow-xl border-2 border-ink"
           >
-            Get directions
+            Get Directions
           </a>
           <a
             href={business.phoneHref}
-            className="rounded-full bg-cream text-ink px-7 py-4 font-semibold hover:bg-white transition"
+            className="rounded-full bg-accent text-ink px-7 py-4 text-sm font-black uppercase tracking-[0.18em] hover:bg-accent-dark transition shadow-xl border-2 border-ink"
           >
             Call {business.phone}
           </a>
